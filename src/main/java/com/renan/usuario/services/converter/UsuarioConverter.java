@@ -87,4 +87,16 @@ public class UsuarioConverter {
                 .bairro(endereco.getBairro())
                 .rua(endereco.getRua()).build();
     }
+
+    public Usuario updateUsuario(UsuarioDTO dto, Usuario entity){
+        return Usuario.builder()
+                .id(entity.getId())
+                .nome(dto.getNome() != null ? dto.getNome() : entity.getNome())
+                .email(dto.getEmail() != null ? dto.getEmail() : entity.getEmail())
+                .cpf(dto.getCpf() != null ? dto.getCpf() : entity.getCpf())
+                .senha(dto.getSenha() != null ? dto.getSenha() : entity.getSenha())
+                .telefones(entity.getTelefones())
+                .enderecos(entity.getEnderecos())
+                .build();
+    }
 }
