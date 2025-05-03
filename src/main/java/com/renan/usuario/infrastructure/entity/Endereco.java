@@ -32,8 +32,7 @@ public class Endereco {
     @Column(name = "rua")
     private String rua;
 
-    @ManyToOne
-    @JoinColumn(name = "usuario_id")
-    private Usuario usuario;
+    @Column(name = "usuario_id")
+    private Long usuario_id;
 
 }

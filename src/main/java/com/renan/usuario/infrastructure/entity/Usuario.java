@@ -30,9 +30,11 @@ public class Usuario {
     @Column(name = "senha")
     private String senha;
 
-    @OneToMany (mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Telefone> telefones;
-
-    @OneToMany (mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private List<Endereco> enderecos;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    private List<Telefone> telefones;
 }
