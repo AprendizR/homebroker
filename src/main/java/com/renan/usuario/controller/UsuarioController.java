@@ -4,6 +4,7 @@ import com.renan.usuario.infrastructure.entity.Usuario;
 import com.renan.usuario.infrastructure.security.JwtUtil;
 import com.renan.usuario.services.UsuarioService;
 import com.renan.usuario.services.dto.EnderecoDTO;
+import com.renan.usuario.services.dto.TelefoneDTO;
 import com.renan.usuario.services.dto.UsuarioDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -58,5 +59,15 @@ public class UsuarioController {
     @PostMapping("/endereco")
     public ResponseEntity<EnderecoDTO> criarEndereco(@RequestHeader("Authorization") String token, @RequestBody EnderecoDTO dto) {
         return ResponseEntity.ok(usuarioService.criarEndereco(token, dto));
+    }
+
+    @PutMapping("/telefone")
+    public ResponseEntity<TelefoneDTO> editarTelefone(@RequestParam("id") Long id, @RequestBody TelefoneDTO dto) {
+        return ResponseEntity.ok(usuarioService.editarTelefone(id, dto));
+    }
+
+    @PostMapping("/telefone")
+    public ResponseEntity<TelefoneDTO> criarTelefone(@RequestHeader("Authorization") String token, @RequestBody TelefoneDTO dto) {
+        return ResponseEntity.ok(usuarioService.criaTelefone(token, dto));
     }
 }
