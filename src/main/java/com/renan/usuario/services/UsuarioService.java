@@ -67,6 +67,16 @@ public class UsuarioService {
         usuarioRepository.deleteByEmail(email);
     }
 
+    public void deletarTelefone(Long idTelefone){
+        Telefone telefone = telefoneRepository.findById(idTelefone).orElseThrow(()-> new ResourceNotFoundException("Id não encontrado. " + idTelefone));
+        telefoneRepository.delete(telefone);
+    }
+
+    public void deletarEndereco(Long idEndereco){
+        Endereco endereco = enderecoRepository.findById(idEndereco).orElseThrow(()-> new ResourceNotFoundException("Id não encontrado. " + idEndereco));
+        enderecoRepository.delete(endereco);
+    }
+
     public EnderecoDTO editarEndereco(Long idEndereco, EnderecoDTO dto) {
         Endereco entity = enderecoRepository.findById(idEndereco).orElseThrow(() -> new ResourceNotFoundException("Id não encontrado. " + idEndereco));
         Endereco enderecoAtualizado = usuarioConverter.updateEndereco(dto, entity);

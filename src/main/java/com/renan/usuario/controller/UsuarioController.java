@@ -50,6 +50,17 @@ public class UsuarioController {
         return ResponseEntity.ok().build();
     }
 
+    @DeleteMapping("/telefone/{id}")
+    public ResponseEntity<Void> deletarTelefone(@PathVariable Long id){
+        usuarioService.deletarTelefone(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/endereco/{id}")
+    public ResponseEntity<Void> deletarEndereco(@PathVariable Long id){
+        usuarioService.deletarEndereco(id);
+        return ResponseEntity.ok().build();
+    }
 
     @PutMapping("/endereco")
     public ResponseEntity<EnderecoDTO> editarEndereco(@RequestParam("id") Long id, @RequestBody EnderecoDTO dto) {
